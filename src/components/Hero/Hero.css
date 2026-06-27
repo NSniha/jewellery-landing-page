@@ -1,0 +1,222 @@
+.jewel-hero {
+  padding: 75px 0 55px;
+  background: #f8f7f5;
+}
+
+.hero-main-card {
+  position: relative;
+  height: 565px;
+  overflow: hidden;
+  animation: heroReveal 1s ease both;
+}
+
+.hero-main-card img,
+.hero-small-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(65, 52, 36, 0.18);
+}
+
+.hero-top-text {
+  position: absolute;
+  right: 24px;
+  top: 28px;
+  color: white;
+  text-align: right;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.hero-top-text span {
+  display: block;
+  width: 95px;
+  height: 1px;
+  background: white;
+  margin: 16px 0 0 auto;
+}
+
+.hero-main-card h1 {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: clamp(46px, 5.4vw, 78px);
+  line-height: 1.18;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  animation: textFloat 1.2s ease both .25s;
+}
+
+.hero-main-card h1 em {
+  font-style: italic;
+}
+
+.spark {
+  position: absolute;
+  color: white;
+  font-size: 36px;
+  animation: sparkle 2.2s ease-in-out infinite;
+}
+
+.spark-one {
+  left: 12%;
+  top: 57%;
+}
+
+.spark-two {
+  right: 12%;
+  top: 36%;
+}
+
+.hero-link {
+  position: absolute;
+  left: 34px;
+  bottom: 28px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.hero-link span,
+.hero-small-card a span {
+  margin-left: 12px;
+  font-size: 26px;
+}
+
+.hero-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.hero-small-card {
+  height: 275px;
+  position: relative;
+  overflow: hidden;
+  animation: cardUp .9s ease both;
+}
+
+.hero-small-card > div:not(.hero-overlay) {
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  color: white;
+  z-index: 2;
+}
+
+.hero-small-card p {
+  font-size: 16px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.hero-small-card a {
+  color: white;
+  text-decoration: none;
+}
+
+.black-card {
+  background: #000;
+}
+
+.black-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 40%, rgba(255,255,255,.08), transparent 35%);
+}
+
+@keyframes heroReveal {
+  from { opacity: 0; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes textFloat {
+  from { opacity: 0; transform: translate(-50%, -43%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+@keyframes cardUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0); opacity: .75; }
+  50% { transform: scale(1.25) rotate(20deg); opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  .jewel-hero {
+    padding-top: 45px;
+  }
+
+  .hero-main-card {
+    height: 500px;
+  }
+
+  .hero-top-text {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jewel-hero {
+    padding: 28px 0 38px;
+  }
+
+  .hero-main-card {
+    height: 560px;
+  }
+
+  .hero-main-card h1 {
+    font-size: clamp(42px, 12vw, 64px);
+    padding: 0 18px;
+    top: 48%;
+  }
+
+  .hero-top-text {
+    left: 20px;
+    right: 20px;
+    top: 28px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .hero-top-text span {
+    margin: 14px auto 0;
+  }
+
+  .hero-link {
+    left: 24px;
+  }
+
+  .spark-one {
+    left: 10%;
+    top: 63%;
+  }
+
+  .spark-two {
+    right: 10%;
+    top: 39%;
+  }
+
+  .hero-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .hero-small-card {
+    height: 250px;
+  }
+}

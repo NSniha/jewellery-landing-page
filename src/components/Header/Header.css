@@ -1,0 +1,181 @@
+.jewel-header {
+  width: 100%;
+  height: 86px;
+  background: #ad8440;
+  color: white;
+  position: relative;
+  z-index: 50;
+}
+
+.jewel-container {
+  width: min(calc(100% - 150px), 1210px);
+  margin: 0 auto;
+}
+
+.jewel-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jewel-links,
+.jewel-actions {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.jewel-links a,
+.jewel-actions button {
+  color: white;
+  font-size: 15px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.jewel-logo {
+  color: white;
+  font-size: 38px;
+  font-style: italic;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-btn span {
+  position: absolute;
+  top: -12px;
+  right: -13px;
+  background: white;
+  color: #ad8440;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+}
+
+.demo-add {
+  border: 1px solid white !important;
+  padding: 7px 13px;
+  border-radius: 999px;
+}
+
+.search-popup {
+  position: absolute;
+  right: 75px;
+  top: 100px;
+  width: 330px;
+  background: white;
+  color: #111;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  animation: popIn .35s ease;
+}
+
+.search-popup input {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  border-radius: 999px;
+  outline: none;
+}
+
+.search-result p {
+  margin: 12px 0 0;
+  font-size: 14px;
+}
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-popup {
+  width: min(420px, 92vw);
+  height: 100%;
+  background: #fff;
+  color: #111;
+  padding: 30px;
+  animation: slideCart .45s ease;
+  overflow-y: auto;
+}
+
+.cart-close {
+  float: right;
+  font-size: 34px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cart-popup h3 {
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 78px;
+  height: 72px;
+  object-fit: cover;
+}
+
+@keyframes slideCart {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: translateY(-12px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 768px) {
+  .jewel-container {
+    width: min(calc(100% - 30px), 100%);
+  }
+
+  .jewel-header {
+    height: 76px;
+  }
+
+  .jewel-links {
+    display: none;
+  }
+
+  .jewel-logo {
+    font-size: 32px;
+  }
+
+  .jewel-actions {
+    gap: 16px;
+  }
+
+  .demo-add {
+    display: none;
+  }
+
+  .search-popup {
+    right: 15px;
+    top: 88px;
+    width: calc(100% - 30px);
+  }
+}
