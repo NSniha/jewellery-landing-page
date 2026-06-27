@@ -1,25 +1,111 @@
 import { useState } from "react";
 import "./Header.css";
 
-export default function Header({ cartItems = [], products = [] }) {
+export default function Header({
+  products = [],
+  cartItems = [],
+  wishlistItems = [],
+  onAddToCart,
+  onRemoveFromCart,
+  onAddToWishlist,
+  onRemoveFromWishlist,
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [lang, setLang] = useState("EN");
+  const [lang, setLang] = useState("USA");
   const [searchText, setSearchText] = useState("");
 
+  const [localCart, setLocalCart] = useState([]);
+  const [localWishlist, setLocalWishlist] = useState([]);
+
   const languages = [
-    { code: "EN", label: "English" },
-    { code: "BN", label: "Bangla" },
-    { code: "FR", label: "French" },
+    {
+      code: "USA",
+      label: "English",
+      flag: "https://flagcdn.com/w40/us.png",
+    },
+    {
+      code: "FR",
+      label: "French",
+      flag: "https://flagcdn.com/w40/fr.png",
+    },
+    {
+      code: "IT",
+      label: "Italian",
+      flag: "https://flagcdn.com/w40/it.png",
+    },
   ];
 
-  const searchableItems = products.length > 0 ? products : cartItems;
+  const isCartControlled = Boolean(onAddToCart || onRemoveFromCart);
+  const isWishlistControlled = Boolean(onAddToWishlist || onRemoveFromWishlist);
+
+  const activeCartItems = isCartControlled ? cartItems : localCart;
+  const activeWishlistItems = isWishlistControlled
+    ? wishlistItems
+    : localWishlist;
+
+  const searchableItems = products.length > 0 ? products : activeCartItems;
 
   const filteredItems = searchableItems.filter((item) =>
     item.name?.toLowerCase().includes(searchText.toLowerCase())
   );
+
+  const currentLanguage =
+    languages.find((item) => item.code === lang) || languages[0];
+
+  const isWishlisted = (product) => {
+    return activeWishlistItems.some(
+      (item) => item.id === product.id || item.name === product.name
+    );
+  };
+
+  const handleAddToCart = (product) => {
+    if (!product) return;
+
+    if (onAddToCart) {
+      onAddToCart(product);
+    } else {
+      setLocalCart((prev) => [...prev, product]);
+    }
+
+    setCartOpen(true);
+    setSearchOpen(false);
+  };
+
+  const handleRemoveFromCart = (product, index) => {
+    if (onRemoveFromCart) {
+      onRemoveFromCart(product);
+    } else {
+      setLocalCart((prev) => prev.filter((_, itemIndex) => itemIndex !== index));
+    }
+  };
+
+  const handleToggleWishlist = (product) => {
+    if (!product) return;
+
+    const alreadyAdded = isWishlisted(product);
+
+    if (alreadyAdded) {
+      if (onRemoveFromWishlist) {
+        onRemoveFromWishlist(product);
+      } else {
+        setLocalWishlist((prev) =>
+          prev.filter(
+            (item) => item.id !== product.id && item.name !== product.name
+          )
+        );
+      }
+    } else {
+      if (onAddToWishlist) {
+        onAddToWishlist(product);
+      } else {
+        setLocalWishlist((prev) => [...prev, product]);
+      }
+    }
+  };
 
   return (
     <header className="vel-header">
@@ -29,7 +115,8 @@ export default function Header({ cartItems = [], products = [] }) {
             <a href="#shop">Shop</a>
 
             <a href="#collections">
-              Collections <ChevronIcon />
+              Collections
+              <ion-icon name="chevron-down-outline"></ion-icon>
             </a>
 
             <a href="#company">Company</a>
@@ -46,7 +133,9 @@ export default function Header({ cartItems = [], products = [] }) {
                 onClick={() => setLangOpen(!langOpen)}
                 aria-label="Change language"
               >
-                {lang} <ChevronIcon />
+                <img src={currentLanguage.flag} alt={currentLanguage.label} />
+                <span>{currentLanguage.code}</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
               </button>
 
               {langOpen && (
@@ -60,8 +149,8 @@ export default function Header({ cartItems = [], products = [] }) {
                         setLangOpen(false);
                       }}
                     >
-                      <span className="vel-lang-icon">{item.code[0]}</span>
-                      <span className="vel-lang-text">{item.label}</span>
+                      <img src={item.flag} alt={item.label} />
+                      <span>{item.label}</span>
                     </button>
                   ))}
                 </div>
@@ -73,7 +162,16 @@ export default function Header({ cartItems = [], products = [] }) {
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
             >
-              <SearchIcon />
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+
+            <button
+              className="vel-icon-btn vel-wishlist-btn"
+              onClick={() => setWishlistOpen(true)}
+              aria-label="Wishlist"
+            >
+              <ion-icon name="heart-outline"></ion-icon>
+              <span>{activeWishlistItems.length}</span>
             </button>
 
             <button
@@ -81,8 +179,8 @@ export default function Header({ cartItems = [], products = [] }) {
               onClick={() => setCartOpen(true)}
               aria-label="Cart"
             >
-              <BagIcon />
-              <span>{cartItems.length}</span>
+              <ion-icon name="bag-handle-outline"></ion-icon>
+              <span>{activeCartItems.length}</span>
             </button>
 
             <button
@@ -90,12 +188,111 @@ export default function Header({ cartItems = [], products = [] }) {
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
-              <span></span>
-              <span></span>
+              <ion-icon name="menu-outline"></ion-icon>
             </button>
           </div>
         </div>
       </div>
+
+      {searchOpen && (
+        <div className="vel-search-layer" onClick={() => setSearchOpen(false)}>
+          <div className="vel-search-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="vel-search-top">
+              <ion-icon name="search-outline"></ion-icon>
+
+              <input
+                type="text"
+                placeholder="Search jewelry..."
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                autoFocus
+              />
+
+              <button
+                className="vel-search-clear"
+                onClick={() => setSearchText("")}
+                aria-label="Clear search"
+              >
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <button className="vel-search-submit">Search</button>
+            </div>
+
+            <div className="vel-search-tags">
+              <button onClick={() => setSearchText("ring")}>Ring</button>
+              <button onClick={() => setSearchText("necklace")}>Necklace</button>
+              <button onClick={() => setSearchText("bracelet")}>Bracelet</button>
+              <button onClick={() => setSearchText("earrings")}>Earrings</button>
+            </div>
+
+            <div className="vel-search-list">
+              {searchableItems.length === 0 ? (
+                <div className="vel-search-empty">
+                  <ion-icon name="sparkles-outline"></ion-icon>
+                  <p>
+                    Product section add করার পর এখানে jewelry search result show
+                    হবে।
+                  </p>
+                </div>
+              ) : filteredItems.length > 0 ? (
+                filteredItems.slice(0, 6).map((item, index) => (
+                  <div className="vel-search-product" key={item.id || index}>
+                    <div className="vel-search-product-img">
+                      {item.image ? (
+                        <img src={item.image} alt={item.name} />
+                      ) : (
+                        <ion-icon name="diamond-outline"></ion-icon>
+                      )}
+                    </div>
+
+                    <div className="vel-search-product-info">
+                      <h4>{item.name}</h4>
+                      <span>Luxury Jewelry</span>
+                    </div>
+
+                    <div className="vel-search-price">
+                      {item.oldPrice && <del>${item.oldPrice}</del>}
+                      {item.price && <strong>${item.price}</strong>}
+                    </div>
+
+                    <button
+                      className={
+                        isWishlisted(item)
+                          ? "vel-search-wish active"
+                          : "vel-search-wish"
+                      }
+                      onClick={() => handleToggleWishlist(item)}
+                      aria-label="Add to wishlist"
+                    >
+                      <ion-icon
+                        name={isWishlisted(item) ? "heart" : "heart-outline"}
+                      ></ion-icon>
+                    </button>
+
+                    <button
+                      className="vel-search-add"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      Add
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div className="vel-search-empty">
+                  <ion-icon name="search-outline"></ion-icon>
+                  <p>No product found.</p>
+                </div>
+              )}
+            </div>
+
+            <button className="vel-see-all" onClick={() => setSearchOpen(false)}>
+              See all
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+      )}
 
       {menuOpen && (
         <div className="vel-menu-overlay" onClick={() => setMenuOpen(false)}>
@@ -113,93 +310,114 @@ export default function Header({ cartItems = [], products = [] }) {
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
               >
-                <CloseIcon />
+                <ion-icon name="close-outline"></ion-icon>
               </button>
             </div>
 
             <div className="vel-drawer-intro">
               <span>Menu</span>
-              <p>
-                Explore timeless jewelry collections crafted for your moment.
-              </p>
+              <p>Explore timeless jewelry collections crafted for your moment.</p>
             </div>
 
             <nav className="vel-drawer-nav">
               <a href="#shop" onClick={() => setMenuOpen(false)}>
                 <span>01</span>
                 <strong>Shop</strong>
-                <DrawerArrow />
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </a>
 
               <a href="#collections" onClick={() => setMenuOpen(false)}>
                 <span>02</span>
                 <strong>Collections</strong>
-                <DrawerArrow />
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </a>
 
               <a href="#company" onClick={() => setMenuOpen(false)}>
                 <span>03</span>
                 <strong>Company</strong>
-                <DrawerArrow />
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </a>
             </nav>
 
             <div className="vel-drawer-footer">
               <a href="#collections" onClick={() => setMenuOpen(false)}>
                 View Collections
+                <ion-icon name="sparkles-outline"></ion-icon>
               </a>
             </div>
           </aside>
         </div>
       )}
 
-      {searchOpen && (
-        <div className="vel-popup-overlay" onClick={() => setSearchOpen(false)}>
-          <div className="vel-search-popup" onClick={(e) => e.stopPropagation()}>
+      {wishlistOpen && (
+        <div className="vel-menu-overlay" onClick={() => setWishlistOpen(false)}>
+          <aside
+            className="vel-side-drawer"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               className="vel-close-btn vel-absolute-close"
-              onClick={() => setSearchOpen(false)}
-              aria-label="Close search"
+              onClick={() => setWishlistOpen(false)}
+              aria-label="Close wishlist"
             >
-              <CloseIcon />
+              <ion-icon name="close-outline"></ion-icon>
             </button>
 
-            <h3>Search Products</h3>
+            <div className="vel-drawer-heading">
+              <span>Saved Items</span>
+              <h3>Your Wishlist</h3>
+            </div>
 
-            <input
-              type="text"
-              placeholder="Search product..."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              autoFocus
-            />
+            {activeWishlistItems.length === 0 ? (
+              <div className="vel-empty-state">
+                <ion-icon name="heart-outline"></ion-icon>
+                <p>Your wishlist is empty.</p>
+                <small>Product section add করার পর wishlist connect হবে।</small>
+              </div>
+            ) : (
+              <div className="vel-side-list">
+                {activeWishlistItems.map((item, index) => (
+                  <div className="vel-side-item" key={item.id || index}>
+                    <div className="vel-side-img">
+                      {item.image ? (
+                        <img src={item.image} alt={item.name} />
+                      ) : (
+                        <ion-icon name="diamond-outline"></ion-icon>
+                      )}
+                    </div>
 
-            <div className="vel-search-result">
-              {searchText.length === 0 ? (
-                <p>Product section add করার পর search result এখানে show হবে।</p>
-              ) : filteredItems.length > 0 ? (
-                filteredItems.map((item, index) => (
-                  <div className="vel-search-item" key={item.id || index}>
-                    {item.image && <img src={item.image} alt={item.name} />}
-
-                    <div>
+                    <div className="vel-side-info">
                       <h4>{item.name}</h4>
                       {item.price && <span>${item.price}</span>}
                     </div>
+
+                    <button
+                      className="vel-side-action"
+                      onClick={() => handleAddToCart(item)}
+                      aria-label="Add wishlist item to cart"
+                    >
+                      <ion-icon name="bag-handle-outline"></ion-icon>
+                    </button>
+
+                    <button
+                      className="vel-side-remove"
+                      onClick={() => handleToggleWishlist(item)}
+                      aria-label="Remove from wishlist"
+                    >
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
                   </div>
-                ))
-              ) : (
-                <p>No product found.</p>
-              )}
-            </div>
-          </div>
+                ))}
+              </div>
+            )}
+          </aside>
         </div>
       )}
 
       {cartOpen && (
         <div className="vel-menu-overlay" onClick={() => setCartOpen(false)}>
           <aside
-            className="vel-cart-drawer"
+            className="vel-side-drawer"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -207,23 +425,44 @@ export default function Header({ cartItems = [], products = [] }) {
               onClick={() => setCartOpen(false)}
               aria-label="Close cart"
             >
-              <CloseIcon />
+              <ion-icon name="close-outline"></ion-icon>
             </button>
 
-            <h3>Your Cart</h3>
+            <div className="vel-drawer-heading">
+              <span>Shopping Bag</span>
+              <h3>Your Cart</h3>
+            </div>
 
-            {cartItems.length === 0 ? (
-              <p>Your cart is empty. Product section add করার পর cart connect হবে।</p>
+            {activeCartItems.length === 0 ? (
+              <div className="vel-empty-state">
+                <ion-icon name="bag-handle-outline"></ion-icon>
+                <p>Your cart is empty.</p>
+                <small>Product section add করার পর cart connect হবে।</small>
+              </div>
             ) : (
-              <div className="vel-cart-list">
-                {cartItems.map((item, index) => (
-                  <div className="vel-cart-item" key={item.id || index}>
-                    {item.image && <img src={item.image} alt={item.name} />}
+              <div className="vel-side-list">
+                {activeCartItems.map((item, index) => (
+                  <div className="vel-side-item" key={item.id || index}>
+                    <div className="vel-side-img">
+                      {item.image ? (
+                        <img src={item.image} alt={item.name} />
+                      ) : (
+                        <ion-icon name="diamond-outline"></ion-icon>
+                      )}
+                    </div>
 
-                    <div>
+                    <div className="vel-side-info">
                       <h4>{item.name}</h4>
                       {item.price && <span>${item.price}</span>}
                     </div>
+
+                    <button
+                      className="vel-side-remove"
+                      onClick={() => handleRemoveFromCart(item, index)}
+                      aria-label="Remove from cart"
+                    >
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
                   </div>
                 ))}
               </div>
@@ -232,91 +471,5 @@ export default function Header({ cartItems = [], products = [] }) {
         </div>
       )}
     </header>
-  );
-}
-
-function ChevronIcon() {
-  return (
-    <svg viewBox="0 0 20 20" width="14" height="14" fill="none">
-      <path
-        d="M5 7.5L10 12.5L15 7.5"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="23" height="23" fill="none">
-      <circle
-        cx="10.8"
-        cy="10.8"
-        r="6.8"
-        stroke="currentColor"
-        strokeWidth="1.55"
-      />
-      <path
-        d="M16.1 16.1L20.5 20.5"
-        stroke="currentColor"
-        strokeWidth="1.55"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function BagIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="23" height="23" fill="none">
-      <path
-        d="M7.2 8.7H16.8L17.75 20H6.25L7.2 8.7Z"
-        stroke="currentColor"
-        strokeWidth="1.55"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9.2 8.7C9.2 5.9 10.35 4.1 12 4.1C13.65 4.1 14.8 5.9 14.8 8.7"
-        stroke="currentColor"
-        strokeWidth="1.55"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function CloseIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
-      <path
-        d="M6 6L18 18M18 6L6 18"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function DrawerArrow() {
-  return (
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-      <path
-        d="M7 17L17 7"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-      <path
-        d="M9 7H17V15"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
