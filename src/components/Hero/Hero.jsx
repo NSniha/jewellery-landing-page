@@ -1,59 +1,73 @@
 import "./Hero.css";
-import heroImg from "../../assets/images/hero-jewellery.jpg";
+import heroMain from "../../assets/images/hero-main.jpg";
+import heroCardOne from "../../assets/images/hero-card-1.jpg";
+import heroCardTwo from "../../assets/images/hero-card-2.jpg";
 
 export default function Hero() {
   return (
-    <section className="jewel-hero">
-      <div className="jewel-container">
-        <div className="hero-main-card">
-          <img src={heroImg} alt="Elegant handcrafted jewelry" />
+    <section className="vel-hero">
+      <div className="vel-hero-container">
+        <div className="vel-hero-main">
+          <img src={heroMain} alt="Handcrafted jewelry" />
+          <div className="vel-main-overlay"></div>
 
-          <div className="hero-overlay"></div>
-
-          <p className="hero-top-text">
+          <p className="vel-hero-note">
             The brilliance of artisan-crafted <br />
             fine jewelry, where each piece tells <br />
             a story of legacy, luxury, and love.
             <span></span>
           </p>
 
-          <h1 className="font-serif4">
+          <h1>
             <em>Experience</em> The Elegance Of <br />
             Handcrafted <em>Jewelry</em>
           </h1>
 
-          <span className="spark spark-one">✦</span>
-          <span className="spark spark-two">✦</span>
+          <span className="vel-spark vel-spark-left">✦</span>
+          <span className="vel-spark vel-spark-right">✦</span>
 
-          <a href="#" className="hero-link">
-            Learn More <span>→</span>
+          <a href="#collections" className="vel-learn">
+            Learn More <ArrowIcon />
           </a>
         </div>
 
-        <div className="hero-bottom-grid">
-          <div className="hero-small-card image-card">
-            <img src={heroImg} alt="Jewelry collection" />
-            <div className="hero-overlay"></div>
-            <div>
+        <div className="vel-hero-grid">
+          <div className="vel-hero-card">
+            <img src={heroCardOne} alt="Pearl jewelry collection" />
+            <div className="vel-card-overlay light-overlay"></div>
+
+            <div className="vel-card-content">
               <p>
                 Every piece tells a story of beauty, <br />
                 strength, and timeless elegance.
               </p>
-              <a href="#">Learn More <span>→</span></a>
+              <a href="#shop">Learn More <ArrowIcon /></a>
             </div>
           </div>
 
-          <div className="hero-small-card black-card">
-            <div>
+          <div className="vel-hero-card">
+            <img src={heroCardTwo} alt="Luxury jewelry detail" />
+            <div className="vel-card-overlay dark-overlay"></div>
+
+            <div className="vel-card-content">
               <p>
                 discover jewelry that reflects your <br />
                 style and celebrates your moment.
               </p>
-              <a href="#">Learn More <span>→</span></a>
+              <a href="#shop">Learn More <ArrowIcon /></a>
             </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 34 18" width="34" height="18" fill="none">
+      <path d="M1 9H30" stroke="currentColor" strokeWidth="1.25" />
+      <path d="M23 2L30 9L23 16" stroke="currentColor" strokeWidth="1.25" />
+    </svg>
   );
 }

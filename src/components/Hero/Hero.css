@@ -1,191 +1,276 @@
-.jewel-hero {
-  padding: 75px 0 55px;
+.vel-hero {
   background: #f8f7f5;
+  padding: 75px 0 56px;
 }
 
-.hero-main-card {
+.vel-hero-container {
+  width: min(calc(100% - 90px), 1360px);
+  margin: 0 auto;
+}
+
+.vel-hero-main,
+.vel-hero-card {
   position: relative;
-  height: 565px;
   overflow: hidden;
-  animation: heroReveal 1s ease both;
+  background: #000;
 }
 
-.hero-main-card img,
-.hero-small-card img {
+.vel-hero-main {
+  height: 567px;
+  animation: velHeroReveal 1s ease both;
+}
+
+.vel-hero-card {
+  height: 276px;
+  animation: velCardUp 0.95s ease both 0.2s;
+}
+
+.vel-hero-main img,
+.vel-hero-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-overlay {
+.vel-hero-card img {
+  transform: scale(1.01);
+}
+
+.vel-main-overlay,
+.vel-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(65, 52, 36, 0.18);
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 12, 8, 0.72) 0%,
+      rgba(18, 12, 8, 0.48) 36%,
+      rgba(18, 12, 8, 0.22) 68%,
+      rgba(18, 12, 8, 0.1) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    );
 }
 
-.hero-top-text {
+.vel-hero-note {
   position: absolute;
-  right: 24px;
   top: 28px;
-  color: white;
+  right: 24px;
+  z-index: 2;
+  color: #fff;
   text-align: right;
+  font-family: "Manrope", sans-serif;
   font-size: 20px;
   line-height: 1.55;
+  animation: velFadeDown 0.85s ease both 0.25s;
 }
 
-.hero-top-text span {
+.vel-hero-note span {
   display: block;
-  width: 95px;
+  width: 98px;
   height: 1px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   margin: 16px 0 0 auto;
 }
 
-.hero-main-card h1 {
+.vel-hero-main h1 {
   position: absolute;
   left: 50%;
-  top: 47%;
+  top: 48%;
+  z-index: 2;
   transform: translate(-50%, -50%);
   width: 100%;
   text-align: center;
-  color: white;
-  font-size: clamp(46px, 5.4vw, 78px);
-  line-height: 1.18;
+  color: #fff;
+  font-family: "Source Serif 4", serif;
+  font-size: clamp(54px, 5.7vw, 82px);
+  line-height: 1.17;
   font-weight: 400;
-  letter-spacing: -1.5px;
-  animation: textFloat 1.2s ease both .25s;
+  letter-spacing: -1.8px;
+  animation: velTitleUp 1.1s ease both 0.35s;
+  text-shadow: 0 10px 35px rgba(0, 0, 0, 0.42);
 }
 
-.hero-main-card h1 em {
+.vel-hero-main h1 em {
   font-style: italic;
 }
 
-.spark {
+.vel-spark {
   position: absolute;
-  color: white;
-  font-size: 36px;
-  animation: sparkle 2.2s ease-in-out infinite;
+  z-index: 2;
+  color: #fff;
+  font-size: 38px;
+  animation: velSpark 2.4s ease-in-out infinite;
 }
 
-.spark-one {
-  left: 12%;
+.vel-spark-left {
+  left: 11.5%;
   top: 57%;
 }
 
-.spark-two {
+.vel-spark-right {
   right: 12%;
-  top: 36%;
+  top: 35.5%;
 }
 
-.hero-link {
+.vel-learn {
   position: absolute;
-  left: 34px;
+  left: 33px;
   bottom: 28px;
-  color: white;
-  text-decoration: none;
+  z-index: 2;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-size: 16px;
+  text-decoration: none;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
-.hero-link span,
-.hero-small-card a span {
-  margin-left: 12px;
-  font-size: 26px;
-}
-
-.hero-bottom-grid {
+.vel-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   margin-top: 30px;
 }
 
-.hero-small-card {
-  height: 275px;
-  position: relative;
-  overflow: hidden;
-  animation: cardUp .9s ease both;
-}
-
-.hero-small-card > div:not(.hero-overlay) {
+.vel-card-content {
   position: absolute;
   left: 28px;
   bottom: 24px;
-  color: white;
   z-index: 2;
+  color: #fff;
 }
 
-.hero-small-card p {
+.vel-card-content p {
+  font-family: "Manrope", sans-serif;
   font-size: 16px;
   line-height: 1.55;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
+  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.65);
 }
 
-.hero-small-card a {
-  color: white;
-  text-decoration: none;
-}
-
-.black-card {
-  background: #000;
-}
-
-.black-card::before {
+.vel-card-content p::after {
   content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 40%, rgba(255,255,255,.08), transparent 35%);
+  display: block;
+  width: 95px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.85);
+  margin-top: 10px;
 }
 
-@keyframes heroReveal {
-  from { opacity: 0; transform: scale(.97); }
-  to { opacity: 1; transform: scale(1); }
+.vel-card-content a {
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
-@keyframes textFloat {
-  from { opacity: 0; transform: translate(-50%, -43%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
+@keyframes velHeroReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-@keyframes cardUp {
-  from { opacity: 0; transform: translateY(35px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes velTitleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -43%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
-@keyframes sparkle {
-  0%, 100% { transform: scale(1) rotate(0); opacity: .75; }
-  50% { transform: scale(1.25) rotate(20deg); opacity: 1; }
+@keyframes velFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (max-width: 1024px) {
-  .jewel-hero {
-    padding-top: 45px;
+@keyframes velCardUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes velSpark {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.22) rotate(18deg);
+  }
+}
+
+@media (max-width: 1199px) {
+  .vel-hero-container {
+    width: min(calc(100% - 60px), 1180px);
   }
 
-  .hero-main-card {
-    height: 500px;
+  .vel-hero-main {
+    height: 520px;
   }
 
-  .hero-top-text {
+  .vel-hero-note {
     font-size: 17px;
   }
 }
 
-@media (max-width: 768px) {
-  .jewel-hero {
-    padding: 28px 0 38px;
+@media (max-width: 991px) {
+  .vel-hero {
+    padding-top: 48px;
   }
 
-  .hero-main-card {
+  .vel-hero-container {
+    width: min(calc(100% - 48px), 100%);
+  }
+
+  .vel-hero-main h1 {
+    font-size: clamp(46px, 7vw, 66px);
+  }
+}
+
+@media (max-width: 767px) {
+  .vel-hero {
+    padding: 30px 0 42px;
+  }
+
+  .vel-hero-container {
+    width: min(calc(100% - 30px), 100%);
+  }
+
+  .vel-hero-main {
     height: 560px;
   }
 
-  .hero-main-card h1 {
-    font-size: clamp(42px, 12vw, 64px);
-    padding: 0 18px;
-    top: 48%;
-  }
-
-  .hero-top-text {
+  .vel-hero-note {
     left: 20px;
     right: 20px;
     top: 28px;
@@ -193,30 +278,47 @@
     font-size: 15px;
   }
 
-  .hero-top-text span {
+  .vel-hero-note span {
     margin: 14px auto 0;
   }
 
-  .hero-link {
-    left: 24px;
+  .vel-hero-main h1 {
+    font-size: clamp(41px, 11.5vw, 61px);
+    padding: 0 14px;
+    line-height: 1.12;
   }
 
-  .spark-one {
-    left: 10%;
-    top: 63%;
-  }
-
-  .spark-two {
-    right: 10%;
-    top: 39%;
-  }
-
-  .hero-bottom-grid {
+  .vel-hero-grid {
     grid-template-columns: 1fr;
     gap: 22px;
   }
 
-  .hero-small-card {
-    height: 250px;
+  .vel-hero-card {
+    height: 260px;
+  }
+
+  .vel-spark-left {
+    left: 9%;
+    top: 64%;
+  }
+
+  .vel-spark-right {
+    right: 9%;
+    top: 38%;
+  }
+}
+
+@media (max-width: 480px) {
+  .vel-hero-main {
+    height: 520px;
+  }
+
+  .vel-card-content {
+    left: 22px;
+    bottom: 22px;
+  }
+
+  .vel-card-content p {
+    font-size: 14px;
   }
 }
