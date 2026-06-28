@@ -4,6 +4,8 @@ import Hero from "./components/Hero/Hero";
 import Categories from "./components/Categories/Categories";
 import StoryDetail from "./components/StoryDetail/StoryDetail";
 import Products from "./components/Products/Products";
+import Testimonials from "./components/Testimonials/Testimonials";
+import FAQ from "./components/FAQ/FAQ";
 import { products } from "./data/products";
 
 function App() {
@@ -61,6 +63,8 @@ function App() {
         onAddToWishlist={addToWishlist}
         onRemoveFromWishlist={removeFromWishlist}
       />
+      <Testimonials />
+      <FAQ />
     </>
   );
 }
