@@ -1,379 +1,55 @@
-.vel-products-section {
-  background: #ffffff;
-  padding: 72px 0 82px;
-}
-
-.vel-products-container {
+.vel-container {
   width: min(calc(100% - 90px), 1360px);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
-.vel-products-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 48px;
+.vel-section-padding {
+  padding-block: 50px;
 }
 
-.vel-products-top h2 {
-  margin: 0;
-  color: #252525;
-  font-family: "Source Serif 4", serif;
-  font-size: clamp(38px, 3.8vw, 50px);
-  line-height: 1.2;
-  font-weight: 500;
-  letter-spacing: -1.2px;
-}
-
-.vel-products-top h2 em {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.vel-products-view {
-  margin-bottom: 8px;
-  color: #8d8d8d;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid currentColor;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.vel-products-view:hover {
-  color: #ad8440;
-  transform: translateX(-4px);
-}
-
-/* Products */
-.vel-products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 42px 26px;
-}
-
-.vel-product-card {
-  cursor: pointer;
-  background: transparent;
-}
-
-.vel-product-image {
-  width: 100%;
-  height: 390px;
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-}
-
-.vel-product-image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.vel-product-card:hover .vel-product-image img {
-  transform: scale(1.04);
-}
-
-.vel-product-actions {
-  position: absolute;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%) translateY(18px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.36s ease, transform 0.36s ease;
-}
-
-.vel-product-card:hover .vel-product-actions {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-
-.vel-product-actions button {
-  width: 43px;
-  height: 43px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.94);
-  color: #17120d;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(8px);
-  transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease;
-}
-
-.vel-product-actions button ion-icon {
-  font-size: 21px;
-}
-
-.vel-product-actions button:hover,
-.vel-product-actions button.active {
-  background: #ad8440;
-  color: #fff;
-  transform: translateY(-4px);
-}
-
-.vel-product-info {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
-  padding-top: 17px;
-}
-
-.vel-product-info h3 {
-  margin: 0 0 8px;
-  color: #252525;
-  font-family: "Manrope", sans-serif;
-  font-size: 17px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-}
-
-.vel-product-info p {
-  margin: 0;
-  color: #9a9a9a;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  line-height: 1.35;
-}
-
-.vel-product-info > span {
-  color: #252525;
-  font-family: "Manrope", sans-serif;
-  font-size: 17px;
-  line-height: 1.2;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-/* Services */
-.vel-service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 42px;
-  margin-top: 92px;
-}
-
-.vel-service-card {
-  text-align: center;
-}
-
-.vel-service-card h3 {
-  max-width: 340px;
-  margin: 0 auto 26px;
-  color: #252525;
-  font-family: "Source Serif 4", serif;
-  font-size: clamp(32px, 3vw, 40px);
-  line-height: 1.25;
-  font-weight: 500;
-  letter-spacing: -1.1px;
-}
-
-.vel-service-card p {
-  max-width: 340px;
-  margin: 0 auto;
-  color: #929292;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.vel-service-card button {
-  margin-top: 32px;
-  width: 112px;
-  height: 40px;
-  border: 1px solid #a9a9a9;
-  background: transparent;
-  color: #8f8f8f;
-  font-family: "Manrope", sans-serif;
-  font-size: 13px;
-  cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.vel-service-card button:hover {
-  border-color: #ad8440;
-  background: #ad8440;
-  color: #fff;
-  transform: translateY(-3px);
-}
-
-/* Quick View */
-.vel-quick-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(18, 14, 10, 0.52);
-  backdrop-filter: blur(7px);
-  z-index: 500;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  animation: velProductFade 0.25s ease both;
-}
-
-.vel-quick-box {
-  width: min(850px, 100%);
-  background: #fffdf9;
-  display: grid;
-  grid-template-columns: 0.9fr 1fr;
-  position: relative;
-  animation: velProductPop 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.vel-quick-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 50%;
-  background: #f8f1e7;
-  color: #ad8440;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.vel-quick-close ion-icon {
-  font-size: 24px;
-}
-
-.vel-quick-img {
-  min-height: 430px;
-  background: #fff;
-  display: grid;
-  place-items: center;
-}
-
-.vel-quick-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vel-quick-content {
-  padding: 64px 48px 48px;
-}
-
-.vel-quick-content > span {
-  display: inline-block;
-  color: #ad8440;
-  background: #f8f1e7;
-  padding: 6px 11px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.vel-quick-content h3 {
-  margin: 20px 0 14px;
-  color: #17120d;
-  font-family: "Source Serif 4", serif;
-  font-size: 38px;
-  line-height: 1.15;
-  font-weight: 500;
-}
-
-.vel-quick-price {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.vel-quick-price strong {
-  color: #17120d;
-  font-size: 22px;
-}
-
-.vel-quick-price del {
-  color: #999;
-}
-
-.vel-quick-content p {
-  margin: 24px 0 0;
-  color: #777;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.vel-quick-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 34px;
-}
-
-.vel-quick-actions button {
-  height: 46px;
-  padding: 0 18px;
-  border: 0;
-  background: #17120d;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.vel-quick-actions button:first-child {
-  background: #f8f1e7;
-  color: #ad8440;
-}
-
-.vel-quick-actions button:hover {
-  background: #ad8440;
-  color: #fff;
-}
-
-/* Toast */
-.vel-product-toast {
-  position: fixed;
-  left: 50%;
-  bottom: 28px;
-  transform: translateX(-50%);
-  background: #17120d;
-  color: #fff;
-  padding: 13px 22px;
-  border-radius: 999px;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  z-index: 700;
-  animation: velProductToast 0.35s ease both;
-}
-
-/* Reveal Animation */
 .product-reveal {
   opacity: 0;
-  transform: translateY(38px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(44px) scale(0.985);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .product-reveal.product-show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* Animations */
-@keyframes velProductFade {
+.product-modal-fade {
+  animation: productFade 0.25s ease both;
+}
+
+.product-modal-pop {
+  animation: productPop 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.product-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 700;
+  transform: translateX(-50%);
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: #17120d;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  animation: productToast 0.35s ease both;
+}
+
+.product-reveal ion-icon {
+  font-size: 21px;
+}
+
+.product-modal-pop ion-icon {
+  font-size: 22px;
+}
+
+@keyframes productFade {
   from {
     opacity: 0;
   }
@@ -383,7 +59,7 @@
   }
 }
 
-@keyframes velProductPop {
+@keyframes productPop {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.96);
@@ -395,7 +71,7 @@
   }
 }
 
-@keyframes velProductToast {
+@keyframes productToast {
   from {
     opacity: 0;
     transform: translateX(-50%) translateY(14px);
@@ -407,133 +83,20 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 1199px) {
-  .vel-products-container {
+  .vel-container {
     width: min(calc(100% - 60px), 1180px);
-  }
-
-  .vel-product-image {
-    height: 340px;
-  }
-
-  .vel-service-grid {
-    gap: 28px;
   }
 }
 
 @media (max-width: 991px) {
-  .vel-products-section {
-    padding: 62px 0 72px;
-  }
-
-  .vel-products-container {
+  .vel-container {
     width: min(calc(100% - 48px), 100%);
-  }
-
-  .vel-products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .vel-service-grid {
-    grid-template-columns: 1fr;
-    gap: 46px;
-    margin-top: 72px;
-  }
-
-  .vel-service-card h3,
-  .vel-service-card p {
-    max-width: 460px;
-  }
-}
-
-@media (max-width: 767px) {
-  .vel-products-section {
-    padding: 54px 0 66px;
-  }
-
-  .vel-products-top {
-    align-items: flex-start;
-    flex-direction: column;
-    margin-bottom: 34px;
-  }
-
-  .vel-products-top h2 {
-    font-size: clamp(32px, 8vw, 42px);
-  }
-
-  .vel-products-view {
-    margin-bottom: 0;
-    font-size: 15px;
-  }
-
-  .vel-product-image {
-    height: 310px;
-  }
-
-  .vel-quick-box {
-    grid-template-columns: 1fr;
-    max-height: calc(100dvh - 40px);
-    overflow-y: auto;
-  }
-
-  .vel-quick-img {
-    min-height: 310px;
-  }
-
-  .vel-quick-content {
-    padding: 34px 24px 30px;
-  }
-
-  .vel-quick-content h3 {
-    font-size: 32px;
   }
 }
 
 @media (max-width: 575px) {
-  .vel-products-section {
-    padding: 50px 0 60px;
-  }
-
-  .vel-products-container {
+  .vel-container {
     width: min(calc(100% - 30px), 100%);
-  }
-
-  .vel-products-grid {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .vel-product-image {
-    height: 350px;
-  }
-
-  .vel-product-actions {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-    bottom: 20px;
-  }
-
-  .vel-service-grid {
-    margin-top: 62px;
-  }
-
-  .vel-service-card h3 {
-    font-size: 31px;
-  }
-
-  .vel-quick-actions {
-    flex-direction: column;
-  }
-
-  .vel-quick-actions button {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 420px) {
-  .vel-product-image {
-    height: 310px;
   }
 }
