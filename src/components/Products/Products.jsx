@@ -75,7 +75,7 @@ export default function Products({
 
   return (
     <section className="vel-section-padding bg-white" id="shop">
-      <div className="vel-container">
+      <div className="vel-container pb-16">
         <div className="product-reveal mb-12 flex items-end justify-between gap-[30px] max-[767px]:mb-[34px] max-[767px]:flex-col max-[767px]:items-start">
           <h2 className="m-0 font-['Source_Serif_4'] text-[clamp(38px,3.8vw,50px)] font-medium leading-[1.2] tracking-[-1.2px] text-[#252525] max-[767px]:text-[clamp(32px,8vw,42px)] max-[575px]:leading-[1.14]">
             Our Most Coveted <br />
@@ -169,11 +169,11 @@ export default function Products({
               style={{ transitionDelay: `${index * 0.1}s` }}
               key={service.title}
             >
-              <h3 className="mx-auto mb-5 mt-0 max-w-[340px] font-['Source_Serif_4'] text-[clamp(30px,3vw,40px)] font-medium leading-[1.25] tracking-[-1.1px] text-[#252525] max-[991px]:max-w-[460px] max-[575px]:text-[30px]">
+              <h3 className="mx-auto mb-5 mt-0 max-w-[340px] font-['Source_Serif_4'] text-[clamp(26px,3vw,34px)] font-medium leading-[1.25] tracking-[-1.1px] text-[#252525] max-[991px]:max-w-[460px] max-[575px]:text-[30px]">
                 {service.title}
               </h3>
 
-              <p className="mx-auto m-0 max-w-[340px] font-['Manrope'] text-[14px] leading-[1.65] text-[#929292] max-[991px]:max-w-[460px]">
+              <p className="mx-auto m-0 max-w-[340px] font-['Manrope'] text-[15px] leading-[1.65] text-[#929292] max-[991px]:max-w-[460px]">
                 {service.text}
               </p>
 
