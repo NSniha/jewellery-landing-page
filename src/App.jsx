@@ -7,6 +7,7 @@ import Products from "./components/Products/Products";
 import Testimonials from "./components/Testimonials/Testimonials";
 import FAQ from "./components/FAQ/FAQ";
 import LegacyCTA from "./components/LegacyCTA/LegacyCTA";
+import Footer from "./components/Footer/Footer";
 import { products } from "./data/products";
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
       <Testimonials />
       <FAQ />
       <LegacyCTA />
+      <Footer />
     </>
   );
 }
