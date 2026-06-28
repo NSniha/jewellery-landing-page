@@ -81,7 +81,7 @@ export default function Testimonials() {
 
   return (
     <section className="vel-section-padding bg-[#fafafa]" id="testimonials">
-      <div className="vel-container py-5">
+      <div className="vel-container pt-6 pb-14">
         <div className="testi-reveal mb-[48px] flex items-end justify-between gap-[30px] max-[991px]:mb-11 max-[767px]:mb-[34px] max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-[18px]">
           <h2 className="m-0 font-['Source_Serif_4'] text-[clamp(38px,3.8vw,50px)] font-medium leading-[1.2] tracking-[-1.2px] text-[#252525] max-[767px]:text-[clamp(32px,8vw,42px)] max-[575px]:leading-[1.14]">
             The Sparkle in <br />
@@ -149,21 +149,6 @@ export default function Testimonials() {
               </button>
             </div>
           </div>
-        </div>
-
-        <div className="testi-reveal mt-8 flex justify-center gap-3 max-[575px]:mt-7">
-          {testimonials.map((testimonial, index) => (
-            <button
-              key={testimonial.id}
-              className={`h-[7px] cursor-pointer rounded-full border-0 transition-all duration-300 ${
-                activeIndex === index
-                  ? "w-8 bg-[#ad8440]"
-                  : "w-[7px] bg-[#d7c9b3] hover:bg-[#ad8440]"
-              }`}
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Go to testimonial ${index + 1}`}
-            ></button>
-          ))}
         </div>
       </div>
     </section>
