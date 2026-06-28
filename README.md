@@ -186,11 +186,3 @@ jewellery-landing-page/
 ## Author
 
 **Nobonita Saha Niha** — Frontend Developer
-
-[![GitHub](https://img.shields.io/badge/GitHub-NSniha-17120D?style=flat-square&logo=github&logoColor=white)](https://github.com/NSniha)
-
----
-
-## License
-
-© 2026 Veloura. All rights reserved. Unauthorized reproduction or commercial use is prohibited.
