@@ -6,6 +6,7 @@ import StoryDetail from "./components/StoryDetail/StoryDetail";
 import Products from "./components/Products/Products";
 import Testimonials from "./components/Testimonials/Testimonials";
 import FAQ from "./components/FAQ/FAQ";
+import LegacyCTA from "./components/LegacyCTA/LegacyCTA";
 import { products } from "./data/products";
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
       />
       <Testimonials />
       <FAQ />
+      <LegacyCTA />
     </>
   );
 }
