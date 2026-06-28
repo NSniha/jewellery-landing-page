@@ -1,89 +1,35 @@
-.vel-hero {
-  background: #ffffff;
-  padding: 75px 0 56px;
-}
-
-.vel-hero-container {
+.vel-container {
   width: min(calc(100% - 90px), 1360px);
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
-.vel-hero-main,
-.vel-hero-card {
-  position: relative;
-  overflow: hidden;
-  background: #000;
+.vel-section-padding {
+  padding-block: 72px;
 }
 
-.vel-hero-main {
-  height: 567px;
-  animation: velHeroReveal 1s ease both;
-}
-
-.vel-hero-card {
-  height: 276px;
-  animation: velCardUp 0.95s ease both 0.2s;
-}
-
-.vel-hero-main img,
-.vel-hero-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vel-hero-card img {
-  transform: scale(1.01);
-}
-
-.vel-main-overlay,
-.vel-card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(18, 12, 8, 0.72) 0%,
-      rgba(18, 12, 8, 0.48) 36%,
-      rgba(18, 12, 8, 0.22) 68%,
-      rgba(18, 12, 8, 0.1) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2)
-    );
-}
-
-.vel-hero-note {
-  position: absolute;
-  top: 28px;
-  right: 24px;
-  z-index: 2;
-  color: #fff;
-  text-align: right;
+.hero-body-text {
   font-family: "Manrope", sans-serif;
-  font-size: 20px;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.hero-body-text-sm {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
   line-height: 1.55;
-  animation: velFadeDown 0.85s ease both 0.25s;
+  font-weight: 400;
 }
 
-.vel-hero-note span {
-  display: block;
-  width: 98px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.9);
-  margin: 16px 0 0 auto;
-}
-
-.vel-hero-main h1 {
+.hero-main-title {
   position: absolute;
   left: 50%;
   top: 48%;
   z-index: 2;
-  transform: translate(-50%, -50%);
   width: 100%;
+  margin: 0;
+  padding: 0 24px;
+  transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
   font-family: "Source Serif 4", serif;
@@ -91,138 +37,67 @@
   line-height: 1.17;
   font-weight: 400;
   letter-spacing: -1.8px;
-  animation: velTitleUp 1.1s ease both 0.35s;
   text-shadow: 0 10px 35px rgba(0, 0, 0, 0.42);
 }
 
-.vel-hero-main h1 em {
+.hero-main-title em {
   font-style: italic;
 }
 
-.vel-spark {
-  position: absolute;
-  z-index: 2;
-  color: #fff;
-  font-size: 38px;
-  animation: velSpark 2.4s ease-in-out infinite;
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(38px) scale(0.985);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.vel-spark-left {
-  left: 11.5%;
-  top: 57%;
+.hero-reveal.hero-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-.vel-spark-right {
-  right: 12%;
-  top: 35.5%;
+.hero-text-reveal {
+  animation: heroTextDown 0.9s ease both 0.25s;
 }
 
-.vel-learn {
-  position: absolute;
-  left: 33px;
-  bottom: 28px;
-  z-index: 2;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 16px;
-  text-decoration: none;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+.hero-title-reveal {
+  animation: heroTitleUp 1.1s ease both 0.35s;
 }
 
-.vel-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 30px;
+.hero-spark {
+  animation: heroSpark 2.4s ease-in-out infinite;
 }
 
-.vel-card-content {
-  position: absolute;
-  left: 28px;
-  bottom: 24px;
-  z-index: 2;
-  color: #fff;
-}
-
-.vel-card-content p {
-  font-family: "Manrope", sans-serif;
-  font-size: 16px;
-  line-height: 1.55;
-  margin-bottom: 13px;
-  text-shadow: 0 5px 18px rgba(0, 0, 0, 0.65);
-}
-
-.vel-card-content p::after {
-  content: "";
-  display: block;
-  width: 95px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.85);
-  margin-top: 10px;
-}
-
-.vel-card-content a {
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  font-size: 16px;
-  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
-}
-
-@keyframes velHeroReveal {
+@keyframes heroTextDown {
   from {
     opacity: 0;
-    transform: scale(0.975);
+    transform: translateY(-18px);
   }
+
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
-@keyframes velTitleUp {
+@keyframes heroTitleUp {
   from {
     opacity: 0;
     transform: translate(-50%, -43%);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
 }
 
-@keyframes velFadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes velCardUp {
-  from {
-    opacity: 0;
-    transform: translateY(34px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes velSpark {
+@keyframes heroSpark {
   0%,
   100% {
     opacity: 0.7;
     transform: scale(1) rotate(0deg);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.22) rotate(18deg);
@@ -230,95 +105,55 @@
 }
 
 @media (max-width: 1199px) {
-  .vel-hero-container {
+  .vel-container {
     width: min(calc(100% - 60px), 1180px);
   }
 
-  .vel-hero-main {
-    height: 520px;
-  }
-
-  .vel-hero-note {
-    font-size: 17px;
+  .vel-section-padding {
+    padding-block: 64px;
   }
 }
 
 @media (max-width: 991px) {
-  .vel-hero {
-    padding-top: 48px;
-  }
-
-  .vel-hero-container {
+  .vel-container {
     width: min(calc(100% - 48px), 100%);
   }
 
-  .vel-hero-main h1 {
+  .vel-section-padding {
+    padding-block: 56px;
+  }
+
+  .hero-main-title {
     font-size: clamp(46px, 7vw, 66px);
   }
 }
 
 @media (max-width: 767px) {
-  .vel-hero {
-    padding: 30px 0 42px;
-  }
-
-  .vel-hero-container {
+  .vel-container {
     width: min(calc(100% - 30px), 100%);
   }
 
-  .vel-hero-main {
-    height: 560px;
+  .vel-section-padding {
+    padding-block: 48px;
   }
 
-  .vel-hero-note {
-    left: 20px;
-    right: 20px;
-    top: 28px;
-    text-align: center;
+  .hero-body-text {
     font-size: 15px;
   }
 
-  .vel-hero-note span {
-    margin: 14px auto 0;
+  .hero-body-text-sm {
+    font-size: 15px;
   }
 
-  .vel-hero-main h1 {
-    font-size: clamp(41px, 11.5vw, 61px);
+  .hero-main-title {
     padding: 0 14px;
+    font-size: clamp(41px, 11.5vw, 61px);
     line-height: 1.12;
-  }
-
-  .vel-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .vel-hero-card {
-    height: 260px;
-  }
-
-  .vel-spark-left {
-    left: 9%;
-    top: 64%;
-  }
-
-  .vel-spark-right {
-    right: 9%;
-    top: 38%;
   }
 }
 
 @media (max-width: 480px) {
-  .vel-hero-main {
-    height: 520px;
-  }
-
-  .vel-card-content {
-    left: 22px;
-    bottom: 22px;
-  }
-
-  .vel-card-content p {
+  .hero-body-text-sm {
     font-size: 14px;
   }
 }
