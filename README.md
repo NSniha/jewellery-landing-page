@@ -1,4 +1,5 @@
 <div align="center">
+<img width="1280" height="800" alt="Linkedin-Feature" src="https://github.com/user-attachments/assets/18ef8dba-de35-44a0-82a9-b71e2213b9bd" />
 
 <h1>Veloura — Luxury Jewellery Landing Page</h1>
 
