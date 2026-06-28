@@ -48,7 +48,7 @@ export default function Hero() {
 
   return (
     <section className="vel-section-padding bg-white">
-      <div className="vel-container">
+      <div className="vel-container pt-8">
         <div className="hero-reveal relative h-[567px] overflow-hidden bg-black max-[1199px]:h-[520px] max-[767px]:h-[560px] max-[480px]:h-[520px]">
           <img
             src={heroMain}
