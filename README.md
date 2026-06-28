@@ -1,147 +1,116 @@
 <div align="center">
 
-  <h1>💍 Veloura</h1>
-  <p><strong>Luxury Jewellery Landing Page</strong></p>
-  <p>A premium, fully responsive jewellery brand experience built with React, Vite & Tailwind CSS.</p>
+<h1>Veloura — Luxury Jewellery Landing Page</h1>
 
-  <br />
+<p>A fully responsive jewellery landing page built with React, Vite, and Tailwind CSS. Designed for a premium jewellery brand with a complete shopping experience including cart, wishlist, quick view, and smooth animations.</p>
 
-  <p>
-    <img src="https://img.shields.io/badge/Status-Completed-AD8440?style=for-the-badge" alt="Status" />
-    <img src="https://img.shields.io/badge/Type-Landing_Page-17120D?style=for-the-badge" alt="Type" />
-    <img src="https://img.shields.io/badge/Responsive-Yes-B48A43?style=for-the-badge" alt="Responsive" />
-  </p>
+<br/>
 
-  <p>
-    <a href="https://idyllic-sfogliatella-cf2330.netlify.app" target="_blank">
-      <img src="https://img.shields.io/badge/🌐 Live Demo-Visit Site-AD8440?style=for-the-badge" alt="Live Demo" />
-    </a>
-    &nbsp;
-    <a href="https://github.com/NSniha/jewellery-landing-page" target="_blank">
-      <img src="https://img.shields.io/badge/📁 Source Code-GitHub-17120D?style=for-the-badge" alt="GitHub" />
-    </a>
-  </p>
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-AD8440?style=for-the-badge&logo=netlify&logoColor=white)](https://idyllic-sfogliatella-cf2330.netlify.app)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-jewellery--landing--page-17120D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NSniha/jewellery-landing-page)
+
+<br/>
+
+[![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-0F172A?style=flat-square&logo=tailwindcss&logoColor=38BDF8)](https://tailwindcss.com)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?style=flat-square&logo=netlify&logoColor=white)](https://netlify.com)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
+## What is Veloura?
 
-- [Overview](#-overview)
-- [Tech Stack](#-tech-stack)
-- [Features](#-features)
-- [Page Sections](#-page-sections)
-- [Design System](#-design-system)
-- [Folder Structure](#-folder-structure)
-- [Getting Started](#-getting-started)
-- [Responsive Breakpoints](#-responsive-breakpoints)
-- [Animation System](#-animation-system)
-- [Future Improvements](#-future-improvements)
-- [Author](#-author)
+**Veloura** is a luxury jewellery landing page built as a frontend portfolio project. It replicates a real-world jewellery brand website with professional UI, interactive shopping features, and a polished design system using gold accent colors, serif typography, and smooth animations.
+
+This jewellery landing page is ideal as a reference project for anyone building a jewellery store website, ecommerce UI, or luxury brand landing page with React and Tailwind CSS.
 
 ---
 
-## 🧭 Overview
+## Live Preview
 
-**Veloura** is a high-end jewellery brand landing page designed for conversions. It combines a luxury visual direction with modern frontend architecture — delivering a polished, fast, and interactive experience.
-
-The project features a full suite of e-commerce interactions including cart, wishlist, search, and quick view — all built without a backend, using React state management.
-
-> Every section is component-based, making the codebase clean, maintainable, and easy to extend.
+🌐 **[https://idyllic-sfogliatella-cf2330.netlify.app](https://idyllic-sfogliatella-cf2330.netlify.app)**
 
 ---
 
-## 🛠 Tech Stack
+## Features
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=react,vite,tailwind,js,html,css" alt="Tech Stack" />
-</p>
+**Shopping Interactions**
+- Cart drawer — add, remove, update quantities, subtotal & total
+- Wishlist drawer — toggle wishlist, active state indicator
+- Quick view modal — image, price, old price, add to cart
+- Search popup — filter products by name, suggested categories
 
-| Technology    | Purpose                          |
-| ------------- | -------------------------------- |
-| React         | Component-based UI architecture  |
-| Vite          | Fast build tool & dev server     |
-| Tailwind CSS  | Utility-first responsive styling |
-| JavaScript    | Interactivity & logic            |
-| CSS3          | Custom animations & layout       |
-| Ionicons      | Icon library                     |
+**UI & Animations**
+- Scroll-reveal animations using native `IntersectionObserver`
+- Auto-playing testimonial slider with arrow and dot navigation
+- FAQ accordion with smooth height animation and icon rotation
+- Toast notifications for cart actions and newsletter form
+- Product image hover zoom effect
+- Drawer and modal slide-in animation
 
----
-
-## ✨ Features
-
-### 🛒 Shopping Interactions
-- Add, remove & update product quantities in **Cart Drawer**
-- Add or remove items in **Wishlist Drawer**
-- **Quick View Modal** with full product details
-- **Search Popup** with product name filtering
-
-### 🎨 UI & Experience
-- Smooth **scroll-reveal animations** via `IntersectionObserver`
-- **Auto-playing Testimonial Slider** with arrows & dot navigation
-- **FAQ Accordion** with icon rotation and smooth height transition
-- **Toast Notification** system for cart and newsletter actions
-- Responsive **Mobile Navigation Menu**
-
-### 📐 Layout & Architecture
-- Fully **responsive** across all screen sizes
-- Reusable **container & spacing system**
-- Consistent **typography & color tokens**
-- **Automatic copyright year** in footer
-- Semantic HTML with accessibility best practices
+**Layout & Design**
+- Fully responsive — desktop, tablet, and mobile
+- Luxury design system — gold accents, serif headings, soft neutral backgrounds
+- Component-based React architecture with reusable layout classes
+- Semantic HTML and accessible markup
 
 ---
 
-## 📄 Page Sections
+## Page Sections
 
-| Section       | Description                                                                 |
-| ------------- | --------------------------------------------------------------------------- |
-| **Header**    | Logo, nav links, language selector, search, wishlist, cart, mobile menu     |
-| **Hero**      | Full-width luxury image layout with CTA, overlays, and decorative elements  |
-| **Categories**| Rings, necklaces, earrings with image hover effects                         |
-| **Story**     | Brand craftsmanship narrative with gold background and full-width imagery    |
-| **Products**  | Product cards with hover zoom, quick view, wishlist & cart actions          |
-| **Services**  | Brand value propositions — craftsmanship, bespoke, limited collections      |
-| **Testimonials** | Auto-playing slider with customer quotes, images, and navigation         |
-| **FAQ**       | Two-column accordion layout for common customer questions                    |
-| **Legacy CTA**| Full-width campaign banner with strong visual background                    |
-| **Footer**    | Brand info, newsletter form, navigation links, social icons, copyright       |
+| Section | Description |
+|---|---|
+| Header | Logo, navigation, search, wishlist, cart, mobile menu |
+| Hero | Large image layout, CTA button, decorative elements |
+| Categories | Rings, necklaces, earrings with hover effects |
+| Story | Brand narrative section with gold background |
+| Products | Product cards with quick view, wishlist, cart |
+| Services | Brand value propositions |
+| Testimonials | Auto-playing customer review slider |
+| FAQ | Smooth accordion for common questions |
+| CTA Banner | Full-width campaign section |
+| Footer | Newsletter, links, social icons, copyright |
 
 ---
 
-## 🎨 Design System
+## Tech Stack
 
-### Color Palette
+| Technology | Role |
+|---|---|
+| React | Component-based UI |
+| Vite | Build tool and dev server |
+| Tailwind CSS | Utility-first styling |
+| JavaScript | Interactivity and logic |
+| CSS3 | Custom animations and layout |
+| Ionicons | UI icon library |
 
-| Token           | Hex       | Preview |
-| --------------- | --------- | ------- |
-| Primary Gold    | `#AD8440` | 🟡 |
-| Warm Gold       | `#B48A43` | 🟡 |
-| Dark Text       | `#252525` | ⚫ |
-| Deep Black      | `#17120D` | ⚫ |
-| Soft Background | `#F8F7F5` | ⬜ |
-| White           | `#FFFFFF` | ⬜ |
+---
 
-### Typography
+## Design System
 
-| Role        | Font             |
-| ----------- | ---------------- |
-| Headings    | Source Serif 4   |
-| Body        | Manrope          |
-| Buttons     | Manrope          |
-| Navigation  | Manrope          |
+**Colors**
 
-### Global Layout Utilities
+| Token | Hex |
+|---|---|
+| Primary Gold | `#AD8440` |
+| Warm Gold | `#B48A43` |
+| Dark Text | `#252525` |
+| Deep Black | `#17120D` |
+| Soft Background | `#F8F7F5` |
+
+**Fonts** — Source Serif 4 (headings) · Manrope (body, buttons, nav)
+
+**Global layout classes**
 
 ```css
-/* Centered, max-width container */
 .vel-container {
   width: min(calc(100% - 90px), 1360px);
   margin-inline: auto;
 }
 
-/* Consistent vertical section spacing */
 .vel-section-padding {
   padding-block: 50px;
 }
@@ -149,70 +118,28 @@ The project features a full suite of e-commerce interactions including cart, wis
 
 ---
 
-## 📁 Folder Structure
-
-```
-veloura-jewellery-landing-page/
-├── public/
-├── src/
-│   ├── assets/
-│   │   └── images/
-│   ├── components/
-│   │   ├── Header/          → Header.jsx + Header.css
-│   │   ├── Hero/            → Hero.jsx + Hero.css
-│   │   ├── Categories/      → Categories.jsx + Categories.css
-│   │   ├── StoryDetail/     → StoryDetail.jsx + StoryDetail.css
-│   │   ├── Products/        → Products.jsx + Products.css
-│   │   ├── Testimonials/    → Testimonials.jsx + Testimonials.css
-│   │   ├── FAQ/             → FAQ.jsx + FAQ.css
-│   │   ├── LegacyCTA/       → LegacyCTA.jsx + LegacyCTA.css
-│   │   └── Footer/          → Footer.jsx + Footer.css
-│   ├── data/
-│   │   └── products.js
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js `v18+`
-- npm or yarn
-
-### Installation
+## Getting Started
 
 ```bash
-# 1. Clone the repository
+# Clone the repository
 git clone https://github.com/NSniha/jewellery-landing-page.git
 
-# 2. Navigate into the project
+# Move into the project folder
 cd jewellery-landing-page
 
-# 3. Install dependencies
+# Install dependencies
 npm install
 
-# 4. Start the development server
+# Start the development server
 npm run dev
 ```
 
-### Other Scripts
-
 ```bash
 npm run build    # Production build
-npm run preview  # Preview production build locally
+npm run preview  # Preview the production build
 ```
 
-### Ionicons Setup
-
-Add these scripts in `index.html` before the closing `</body>` tag:
+Add Ionicons before the closing `</body>` tag in `index.html`:
 
 ```html
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -221,82 +148,48 @@ Add these scripts in `index.html` before the closing `</body>` tag:
 
 ---
 
-## 📱 Responsive Breakpoints
+## Folder Structure
 
-| Breakpoint | Target Device        |
-| ---------- | -------------------- |
-| `1199px`   | Large laptop         |
-| `991px`    | Tablet landscape     |
-| `767px`    | Tablet portrait      |
-| `575px`    | Large mobile         |
-| `420px`    | Small mobile         |
-
----
-
-## 🎞 Animation System
-
-All animations use native **`IntersectionObserver`** — no animation library required.
-
-| Animation                | Trigger            |
-| ------------------------ | ------------------ |
-| Fade-up section reveal   | Scroll into view   |
-| Staggered card entrance  | Scroll into view   |
-| Product image hover zoom | Mouse hover        |
-| CTA background zoom      | Mouse hover        |
-| Testimonial transition   | Auto / Arrow click |
-| Drawer slide-in          | Button click       |
-| Modal popup              | Quick view click   |
-| Toast notification       | Cart / Newsletter  |
-| FAQ accordion            | Item click         |
+```
+jewellery-landing-page/
+├── public/
+├── src/
+│   ├── assets/images/
+│   ├── components/
+│   │   ├── Header/
+│   │   ├── Hero/
+│   │   ├── Categories/
+│   │   ├── StoryDetail/
+│   │   ├── Products/
+│   │   ├── Testimonials/
+│   │   ├── FAQ/
+│   │   ├── LegacyCTA/
+│   │   └── Footer/
+│   ├── data/products.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
 
 ---
 
-## 🔮 Future Improvements
+## Responsive Breakpoints
 
-- [ ] Product details page
-- [ ] Checkout page
-- [ ] Cart persistence with `localStorage`
-- [ ] User authentication
-- [ ] Order history
-- [ ] Admin product management panel
-- [ ] Firebase or Supabase backend integration
-- [ ] Payment gateway
-- [ ] Blog / journal section
-- [ ] SEO metadata for production
-- [ ] CMS support for dynamic content
+`1199px` · `991px` · `767px` · `575px` · `420px`
 
 ---
 
-## 🚢 Deployment
+## Author
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Netlify-0B172A?style=for-the-badge&logo=netlify&logoColor=00C7B7" alt="Netlify" />
-  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=FFFFFF" alt="Vercel" />
-  <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=github&logoColor=FFFFFF" alt="GitHub Pages" />
-</p>
+**Nobonita Saha Niha** — Frontend Developer
 
-Compatible with **Netlify**, **Vercel**, and **GitHub Pages**.
+[![GitHub](https://img.shields.io/badge/GitHub-NSniha-17120D?style=flat-square&logo=github&logoColor=white)](https://github.com/NSniha)
 
 ---
 
-## 👩‍💻 Author
+## License
 
-**Nobonita Saha Niha**
-
-Frontend Developer specializing in responsive websites, React interfaces, Tailwind CSS layouts, landing pages, and modern frontend implementation.
-
-<p align="left">
-  <a href="https://github.com/NSniha">
-    <img src="https://img.shields.io/badge/GitHub-NSniha-17120D?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  </a>
-</p>
-
----
-
-## 📜 Copyright
-
-**© 2026 Veloura. All rights reserved.**
-
-All design, layout, frontend implementation, written content, UI components, and brand experience are protected. Unauthorized copying, redistribution, resale, or commercial use without permission is strictly prohibited.
-
-> *Designed and developed with care for timeless elegance, responsible luxury, and refined digital jewellery experiences.*
+© 2026 Veloura. All rights reserved. Unauthorized reproduction or commercial use is prohibited.
